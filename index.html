@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belén & Tobias  - Nuestra Boda</title>
+    <title>Belén & Tobias - Nuestra Boda | Verde & Dorado</title>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Montserrat:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
@@ -24,8 +24,21 @@
         body {
             font-family: 'Montserrat', sans-serif;
             color: #2c2c2c;
-            background-color: #fffef9;
+            background-color: #FDFBF7;
             overflow-x: hidden;
+        }
+
+        /* PALETA DE COLORES: VERDE VIBRANTE + DORADO */
+        :root {
+            --wedding-green: #2E7D32;
+            --wedding-green-dark: #1B5E20;
+            --wedding-green-light: #4CAF50;
+            --gold: #D4AF37;
+            --gold-light: #FFD700;
+            --gold-dark: #B8860B;
+            --cream-bg: #FDFBF7;
+            --light-green-bg: #F1F8E9;
+            --text-dark: #2E3B2C;
         }
 
         @keyframes fadeInUp {
@@ -57,7 +70,7 @@
             font-family: 'Antic Didone', serif;
             font-size: 24px;
             letter-spacing: 4px;
-            color: #af8858;
+            color: var(--wedding-green);
             text-decoration: none;
         }
 
@@ -69,7 +82,7 @@
 
         .nav-menu a {
             text-decoration: none;
-            color: #2c2c2c;
+            color: var(--text-dark);
             font-weight: 500;
             text-transform: uppercase;
             font-size: 12px;
@@ -84,8 +97,8 @@
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 1px;
-            background: #af8858;
+            height: 2px;
+            background: var(--gold);
             transition: width 0.3s;
         }
 
@@ -95,7 +108,7 @@
         }
 
         .nav-menu a:hover {
-            color: #af8858;
+            color: var(--wedding-green);
         }
 
         .social-icons {
@@ -104,19 +117,20 @@
         }
 
         .social-icons a {
-            color: #af8858;
+            color: var(--gold);
             font-size: 16px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, color 0.3s;
         }
 
         .social-icons a:hover {
             transform: translateY(-3px);
+            color: var(--wedding-green);
         }
 
         .hero {
             height: 100vh;
             min-height: 700px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            background: linear-gradient(rgba(46, 125, 50, 0.35), rgba(27, 94, 32, 0.45)), url('https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1920');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -135,7 +149,7 @@
             left: 0;
             right: 0;
             height: 150px;
-            background: linear-gradient(to top, #fffef9, transparent);
+            background: linear-gradient(to top, var(--cream-bg), transparent);
         }
 
         .hero-content {
@@ -162,6 +176,10 @@
             animation: fadeInUp 0.8s ease 0.2s forwards;
         }
 
+        .hero-content h1 span {
+            color: var(--gold-light);
+        }
+
         .hero-content .date {
             font-size: 16px;
             letter-spacing: 6px;
@@ -173,7 +191,7 @@
         .separator {
             width: 60px;
             height: 2px;
-            background: #af8858;
+            background: var(--gold);
             margin: 30px auto;
             position: relative;
         }
@@ -183,9 +201,9 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            background: #fffef9;
+            background: transparent;
             padding: 0 10px;
-            color: #af8858;
+            color: var(--gold);
         }
 
         .section {
@@ -193,11 +211,11 @@
         }
 
         .section-light {
-            background: #fffef9;
+            background: var(--cream-bg);
         }
 
         .section-beige {
-            background: #faf7f2;
+            background: var(--light-green-bg);
         }
 
         .container {
@@ -211,7 +229,7 @@
             font-size: 48px;
             letter-spacing: 6px;
             margin-bottom: 20px;
-            color: #2c2c2c;
+            color: var(--wedding-green);
             font-weight: 400;
         }
 
@@ -219,64 +237,9 @@
             text-align: center;
             font-family: 'EB Garamond', serif;
             font-size: 20px;
-            color: #af8858;
+            color: var(--gold-dark);
             margin-bottom: 60px;
             font-style: italic;
-        }
-
-        .couple-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-            margin-top: 40px;
-        }
-
-        .couple-card {
-            text-align: center;
-            padding: 40px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
-            transition: all 0.4s ease;
-        }
-
-        .couple-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 50px rgba(0,0,0,0.08);
-        }
-
-        .couple-card .image-wrapper {
-            width: 280px;
-            height: 280px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .couple-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .couple-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .couple-card h3 {
-            font-family: 'Antic Didone', serif;
-            font-size: 28px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .couple-card .role {
-            color: #af8858;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
         }
 
         .timeline {
@@ -289,7 +252,7 @@
         .timeline-year {
             font-family: 'Antic Didone', serif;
             font-size: 48px;
-            color: #af8858;
+            color: var(--gold);
             margin-bottom: 20px;
             font-weight: 400;
             text-align: center;
@@ -301,6 +264,7 @@
             margin: 0 auto 20px;
             border-radius: 50%;
             overflow: hidden;
+            border: 2px solid var(--gold);
         }
 
         .timeline-image img {
@@ -312,6 +276,7 @@
         .timeline-item h4 {
             text-align: center;
             margin-bottom: 10px;
+            color: var(--wedding-green);
         }
 
         .timeline-item p {
@@ -321,7 +286,7 @@
         }
 
         .countdown-section {
-            background: linear-gradient(135deg, #faf7f2 0%, #fffef9 100%);
+            background: linear-gradient(135deg, var(--light-green-bg) 0%, var(--cream-bg) 100%);
             text-align: center;
             padding: 100px 20px;
         }
@@ -340,14 +305,15 @@
             padding: 30px 40px;
             border-radius: 16px;
             min-width: 140px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
+            border-top: 3px solid var(--gold);
         }
 
         .countdown-number {
             font-family: 'Antic Didone', serif;
             font-size: 56px;
             font-weight: 400;
-            color: #af8858;
+            color: var(--wedding-green);
         }
 
         .countdown-label {
@@ -355,6 +321,7 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-top: 10px;
+            color: var(--gold-dark);
         }
 
         .events-grid {
@@ -370,17 +337,18 @@
             border-radius: 24px;
             transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid rgba(175, 136, 88, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .event-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(46, 125, 50, 0.12);
+            border-color: var(--gold);
         }
 
         .event-card i {
             font-size: 48px;
-            color: #af8858;
+            color: var(--gold);
             margin-bottom: 25px;
         }
 
@@ -388,12 +356,112 @@
             font-family: 'Antic Didone', serif;
             font-size: 28px;
             margin-bottom: 15px;
+            color: var(--wedding-green-dark);
         }
 
         .event-time {
-            color: #af8858;
+            color: var(--gold);
             font-weight: 600;
             margin: 15px 0;
+        }
+
+        /* Sección de Hospedaje */
+        .lodging-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .lodging-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .lodging-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(46, 125, 50, 0.12);
+            border-color: var(--gold);
+        }
+
+        .lodging-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .lodging-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .lodging-card:hover .lodging-image img {
+            transform: scale(1.05);
+        }
+
+        .lodging-content {
+            padding: 25px;
+        }
+
+        .lodging-content h3 {
+            font-family: 'Antic Didone', serif;
+            font-size: 24px;
+            color: var(--wedding-green-dark);
+            margin-bottom: 10px;
+        }
+
+        .lodging-location {
+            color: var(--gold);
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lodging-location i {
+            font-size: 12px;
+        }
+
+        .lodging-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .lodging-price {
+            font-weight: 600;
+            color: var(--wedding-green);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .lodging-btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--wedding-green-dark);
+            padding: 10px 25px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .lodging-btn:hover {
+            background: var(--gold);
+            color: var(--wedding-green-dark);
+            border-color: var(--gold);
         }
 
         .gallery-grid {
@@ -426,7 +494,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(175, 136, 88, 0.85);
+            background: rgba(46, 125, 50, 0.85);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -439,117 +507,12 @@
         }
 
         .gallery-overlay i {
-            color: white;
+            color: var(--gold);
             font-size: 32px;
         }
 
-        .rsvp-form {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            padding: 60px;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1px solid #e8e2d9;
-            border-radius: 12px;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s;
-            background: #fefcf9;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #af8858;
-            box-shadow: 0 0 0 3px rgba(175, 136, 88, 0.1);
-        }
-
-        .btn {
-            background: #af8858;
-            color: white;
-            padding: 14px 50px;
-            border: none;
-            border-radius: 40px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .btn:hover {
-            background: #8b6b42;
-            transform: translateY(-2px);
-        }
-
-        .faq-grid {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            margin-bottom: 16px;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #f0ebe4;
-        }
-
-        .faq-question {
-            padding: 22px 28px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-        }
-
-        .faq-question i {
-            color: #af8858;
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 0 28px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 28px 28px 28px;
-            max-height: 300px;
-        }
-
         .footer {
-            background: #1f1e1c;
+            background: #1B2E1A;
             color: #aaa;
             text-align: center;
             padding: 80px 20px 40px;
@@ -559,8 +522,12 @@
             font-family: 'Antic Didone', serif;
             font-size: 32px;
             letter-spacing: 4px;
-            color: #af8858;
+            color: var(--gold);
             margin-bottom: 20px;
+        }
+
+        .footer .separator {
+            background: var(--gold);
         }
 
         .footer .social-icons {
@@ -573,7 +540,7 @@
         }
 
         .footer .social-icons a:hover {
-            color: #af8858;
+            color: var(--gold);
         }
 
         .copyright {
@@ -585,10 +552,8 @@
         @media (max-width: 992px) {
             .header { padding: 15px 25px; }
             .hero-content h1 { font-size: 55px; letter-spacing: 6px; }
-            .couple-grid, .events-grid, .timeline { grid-template-columns: 1fr; gap: 40px; }
+            .events-grid, .timeline, .lodging-grid { grid-template-columns: 1fr; gap: 40px; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .form-row { grid-template-columns: 1fr; }
-            .rsvp-form { padding: 40px 25px; }
         }
 
         @media (max-width: 768px) {
@@ -610,9 +575,8 @@
             <li><a href="#home" class="active">Inicio</a></li>
             <li><a href="#story">Historia</a></li>
             <li><a href="#events">Eventos</a></li>
+            <li><a href="#lodging">Hospedaje</a></li>
             <li><a href="#gallery">Galería</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-            <li><a href="#faq">Info</a></li>
         </ul>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -626,73 +590,39 @@
             <div class="subtitle">La boda de</div>
             <h1>Belén <span style="font-family: 'EB Garamond';">&</span> Tobias</h1>
             <div class="separator"><i class="fas fa-heart"></i></div>
-            <div class="date">SÁBADO, 25 DE Julio 2026</div>
+            <div class="date">SÁBADO, 25 DE JULIO 2026</div>
         </div>
     </section>
 
     <section id="story" class="section section-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Te invitamos<br>a nuestra boda</h2>
-            <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
-            
-            <div class="couple-grid">
-                <div class="couple-card" data-aos="fade-right">
-                    <div class="image-wrapper">
-                        <img src="https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="Amelia">
-                    </div>
-                    <h3>Belén</h3>
-                    <div class="role">The Bride</div>
-                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
-                    <div class="social-icons" style="justify-content: center; margin-top: 20px;">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="couple-card" data-aos="fade-left">
-                    <div class="image-wrapper">
-                        <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="James">
-                    </div>
-                    <h3>Tobias</h3>
-                    <div class="role">The Groom</div>
-                    <p>Autem dicant cum ex, ei vis nibh solum simul, veritus fierent delan fastidii quo ea. Cu solum scripta pro.</p>
-                    <div class="social-icons" style="justify-content: center; margin-top: 20px;">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-beige">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Our Love Story</h2>
+            <h2 class="section-title" data-aos="fade-up">Nuestra Historia de Amor</h2>
             <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
             
             <div class="timeline">
                 <div class="timeline-item" data-aos="fade-up">
                     <div class="timeline-year">2018</div>
                     <div class="timeline-image"><img src="https://images.pexels.com/photos/2254698/pexels-photo-2254698.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="2018"></div>
-                    <h4>The Chance Meeting</h4>
-                    <p>Cu solum scripta pro. Qui in clita.</p>
+                    <h4>El Primer Encuentro</h4>
+                    <p>Un café compartido que cambió nuestras vidas para siempre.</p>
                 </div>
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="timeline-year">2020</div>
                     <div class="timeline-image"><img src="https://images.pexels.com/photos/3822731/pexels-photo-3822731.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="2020"></div>
-                    <h4>Connections Build</h4>
-                    <p>Cu solum scripta pro. Qui in clita.</p>
+                    <h4>Creciendo Juntos</h4>
+                    <p>Viajes, risas y cada día más enamorados.</p>
                 </div>
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="timeline-year">2023</div>
                     <div class="timeline-image"><img src="https://images.pexels.com/photos/2253836/pexels-photo-2253836.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="2023"></div>
-                    <h4>Magical Proposal</h4>
-                    <p>Cu solum scripta pro. Qui in clita.</p>
+                    <h4>El Sí Quiero</h4>
+                    <p>Una noche mágica y un anillo de promesa eterna.</p>
                 </div>
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
                     <div class="timeline-year">2026</div>
                     <div class="timeline-image"><img src="https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="2026"></div>
-                    <h4>Everlasting Tale</h4>
-                    <p>Cu solum scripta pro. Qui in clita.</p>
+                    <h4>Un Nuevo Comienzo</h4>
+                    <p>El día que uniremos nuestras vidas para siempre.</p>
                 </div>
             </div>
         </div>
@@ -700,7 +630,7 @@
 
     <div class="countdown-section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Don't Miss It</h2>
+            <h2 class="section-title" data-aos="fade-up">¡Faltan Pocos Días!</h2>
             <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
             <div class="countdown" id="countdown">
                 <div class="countdown-item"><div class="countdown-number" id="days">00</div><div class="countdown-label">Días</div></div>
@@ -713,28 +643,77 @@
 
     <section id="events" class="section section-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Wedding Events</h2>
+            <h2 class="section-title" data-aos="fade-up">Celebraciones</h2>
             <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
             <div class="events-grid">
                 <div class="event-card" data-aos="fade-right">
                     <i class="fas fa-ring"></i>
-                    <h3>Wedding Ceremony</h3>
-                    <div class="event-time">14:00 - 17:00 pm</div>
-                    <p>Mulia Resort Nusa Dua, Bali<br>Indonesia</p>
+                    <h3>Ceremonia Religiosa</h3>
+                    <div class="event-time">14:00 - 17:00 hrs</div>
+                    <p>Iglesia San Francisco de Asís<br>Salta, Argentina</p>
                 </div>
                 <div class="event-card" data-aos="fade-left">
                     <i class="fas fa-champagne-glasses"></i>
-                    <h3>The Reception</h3>
-                    <div class="event-time">18:00 - 23:00 pm</div>
-                    <p>Mulia Resort Nusa Dua, Bali<br>Indonesia</p>
+                    <h3>Recepción & Fiesta</h3>
+                    <div class="event-time">18:00 - 23:00 hrs</div>
+                    <p>Finca La Esmeralda - Salta<br>Jardines decorados con estilo natural</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="section-beige">
+    <section id="lodging" class="section-beige">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Photo Gallery</h2>
+            <h2 class="section-title" data-aos="fade-up">Opciones de Hospedaje</h2>
+            <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
+            <p class="section-subtitle" data-aos="fade-up">Hoteles recomendados con tarifas especiales para nuestros invitados</p>
+            
+            <div class="lodging-grid">
+                <div class="lodging-card" data-aos="fade-up">
+                    <div class="lodging-image">
+                        <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Hotel Sheraton">
+                    </div>
+                    <div class="lodging-content">
+                        <h3>Hotel Sheraton Salta</h3>
+                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Centro, Salta</div>
+                        <p class="lodging-description">Hotel 5 estrellas con vistas a la ciudad, pileta climatizada y spa. A 15 minutos de la finca.</p>
+                        <p class="lodging-price">💚 Tarifa especial: $120 USD / noche</p>
+                        <a href="#" class="lodging-btn">Ver más</a>
+                    </div>
+                </div>
+
+                <div class="lodging-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="lodging-image">
+                        <img src="https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Finca La Esmeralda">
+                    </div>
+                    <div class="lodging-content">
+                        <h3>Finca La Esmeralda</h3>
+                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Valle de Lerma</div>
+                        <p class="lodging-description">Hospedaje dentro de la misma finca donde será la recepción. Cabañas rodeadas de naturaleza.</p>
+                        <p class="lodging-price">💚 Tarifa especial: $95 USD / noche</p>
+                        <a href="#" class="lodging-btn">Ver más</a>
+                    </div>
+                </div>
+
+                <div class="lodging-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="lodging-image">
+                        <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Boutique Hotel">
+                    </div>
+                    <div class="lodging-content">
+                        <h3>Legado Mitológico</h3>
+                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Casco Histórico</div>
+                        <p class="lodging-description">Boutique hotel de estilo colonial, desayuno incluido y a pasos de la iglesia.</p>
+                        <p class="lodging-price">💚 Tarifa especial: $85 USD / noche</p>
+                        <a href="#" class="lodging-btn">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Galería de Recuerdos</h2>
             <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
             <div class="gallery-grid">
                 <div class="gallery-item" data-aos="fade-up"><img src="https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Gallery"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
@@ -747,46 +726,11 @@
         </div>
     </section>
 
-    <section id="rsvp" class="section section-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">R.S.V.P</h2>
-            <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
-            <p class="section-subtitle" data-aos="fade-up">Confirma tu asistencia antes del 14 de febrero 2026</p>
-            <div class="rsvp-form" data-aos="fade-up">
-                <form id="rsvpForm">
-                    <div class="form-row">
-                        <div class="form-group"><input type="text" placeholder="Nombre completo" required></div>
-                        <div class="form-group"><input type="email" placeholder="Email" required></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><select><option>¿Asistirás?</option><option>Sí, asistiré</option><option>No podré asistir</option></select></div>
-                        <div class="form-group"><select><option>Número de invitados</option><option>1 persona</option><option>2 personas</option><option>3 personas</option><option>4+ personas</option></select></div>
-                    </div>
-                    <div class="form-group"><textarea rows="3" placeholder="Mensaje especial"></textarea></div>
-                    <button type="submit" class="btn">Confirmar Asistencia</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="section-beige">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Event Information</h2>
-            <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
-            <div class="faq-grid">
-                <div class="faq-item"><div class="faq-question"><span>Ceremony and Reception Details</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>La ceremonia será a las 14:00 hrs y la recepción a las 18:00 hrs en Mulia Resort Nusa Dua, Bali.</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>Lodging Recommendations</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Contamos con tarifa especial en Mulia Resort. Contacta con nosotros para reservar.</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>Dress Code</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Código: Formal. Colores claros y elegantes son bienvenidos.</p></div></div>
-                <div class="faq-item"><div class="faq-question"><span>Gifts</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Tu presencia es el mejor regalo. Si deseas contribuir, habrá una urna en la recepción.</p></div></div>
-            </div>
-        </div>
-    </section>
-
     <footer class="footer">
-        <h3>Amelia & James</h3>
-        <div class="separator" style="background: #af8858; margin: 20px auto;"></div>
+        <h3>Belén & Tobias</h3>
+        <div class="separator" style="background: var(--gold); margin: 20px auto;"></div>
         <div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
-        <div class="copyright"><p>© 2025 Amelia & James - Todos los derechos reservados</p></div>
+        <div class="copyright"><p>© 2025 Belén & Tobias - Nuestra Boda Verde & Dorado</p></div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -794,7 +738,7 @@
         AOS.init({ duration: 800, once: true, offset: 100 });
         
         function updateCountdown() {
-            const weddingDate = new Date("February 14, 2026 14:00:00").getTime();
+            const weddingDate = new Date("July 25, 2026 14:00:00").getTime();
             const now = new Date().getTime();
             const distance = weddingDate - now;
             document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -807,16 +751,6 @@
 
         window.addEventListener('scroll', function() {
             document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
-        });
-
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por confirmar tu asistencia! Te esperamos en nuestra boda 💕');
-            this.reset();
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
