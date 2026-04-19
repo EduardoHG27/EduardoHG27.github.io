@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Belén & Tobias - Nuestra Boda | Verde & Dorado</title>
     
     <!-- Google Fonts -->
@@ -242,6 +242,139 @@
             font-style: italic;
         }
 
+        /* NUEVA SECCIÓN: EVENTOS DETALLADOS (CEREMONIA Y RECEPCIÓN) */
+        .detailed-events {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            margin-top: 40px;
+        }
+
+        .event-detail-card {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .event-detail-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 40px -15px rgba(46, 125, 50, 0.2);
+            border-color: var(--gold);
+        }
+
+        .event-image {
+            flex: 1.2;
+            min-width: 280px;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .event-detail-card:hover .event-image img {
+            transform: scale(1.03);
+        }
+
+        .event-info {
+            flex: 1;
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .event-info h3 {
+            font-family: 'Antic Didone', serif;
+            font-size: 32px;
+            color: var(--wedding-green-dark);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .event-info .event-time-icon {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 15px 0 10px;
+            color: var(--gold-dark);
+            font-weight: 500;
+        }
+
+        .event-info .event-time-icon i {
+            font-size: 22px;
+            color: var(--gold);
+        }
+
+        .event-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4a5b48;
+            margin: 15px 0 20px;
+        }
+
+        .event-address {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: var(--light-green-bg);
+            padding: 14px 18px;
+            border-radius: 24px;
+            margin: 10px 0 25px;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .event-address i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .btn-view-more {
+            align-self: flex-start;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--wedding-green-dark);
+            padding: 12px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .btn-view-more i {
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .btn-view-more:hover {
+            background: var(--gold);
+            color: var(--wedding-green-dark);
+            border-color: var(--gold);
+        }
+
+        .btn-view-more:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Estilos existentes */
         .timeline {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -324,47 +457,6 @@
             color: var(--gold-dark);
         }
 
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
-        .event-card {
-            background: white;
-            padding: 50px 40px;
-            text-align: center;
-            border-radius: 24px;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(46, 125, 50, 0.12);
-            border-color: var(--gold);
-        }
-
-        .event-card i {
-            font-size: 48px;
-            color: var(--gold);
-            margin-bottom: 25px;
-        }
-
-        .event-card h3 {
-            font-family: 'Antic Didone', serif;
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: var(--wedding-green-dark);
-        }
-
-        .event-time {
-            color: var(--gold);
-            font-weight: 600;
-            margin: 15px 0;
-        }
-
         /* Sección de Hospedaje */
         .lodging-grid {
             display: grid;
@@ -423,10 +515,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .lodging-location i {
-            font-size: 12px;
         }
 
         .lodging-description {
@@ -552,8 +640,11 @@
         @media (max-width: 992px) {
             .header { padding: 15px 25px; }
             .hero-content h1 { font-size: 55px; letter-spacing: 6px; }
-            .events-grid, .timeline, .lodging-grid { grid-template-columns: 1fr; gap: 40px; }
+            .timeline, .lodging-grid { grid-template-columns: 1fr; gap: 40px; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .event-detail-card { flex-direction: column; }
+            .event-image { min-height: 280px; }
+            .event-info { padding: 30px 25px; }
         }
 
         @media (max-width: 768px) {
@@ -576,7 +667,7 @@
             <li><a href="#story">Historia</a></li>
             <li><a href="#events">Eventos</a></li>
             <li><a href="#lodging">Hospedaje</a></li>
-            <li><a href="#gallery">Galería</a></li>
+            <li><a href="#footer">Contacto</a></li>
         </ul>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -598,29 +689,28 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Nuestra Historia de Amor</h2>
             <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
-            
             <div class="timeline">
                 <div class="timeline-item" data-aos="fade-up">
                     <div class="timeline-year">2018</div>
-                    <div class="timeline-image"><img src="https://images.pexels.com/photos/2254698/pexels-photo-2254698.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="2018"></div>
+                    <div class="timeline-image"><img src="imagenes/tov_bel_1.jpeg" alt="2018"></div>
                     <h4>El Primer Encuentro</h4>
                     <p>Un café compartido que cambió nuestras vidas para siempre.</p>
                 </div>
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="timeline-year">2020</div>
-                    <div class="timeline-image"><img src="https://images.pexels.com/photos/3822731/pexels-photo-3822731.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="2020"></div>
+                    <div class="timeline-image"><img src="imagenes/tov_bel_2.jpeg" alt="2020"></div>
                     <h4>Creciendo Juntos</h4>
                     <p>Viajes, risas y cada día más enamorados.</p>
                 </div>
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="timeline-year">2023</div>
-                    <div class="timeline-image"><img src="https://images.pexels.com/photos/2253836/pexels-photo-2253836.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="2023"></div>
+                    <div class="timeline-image"><img src="imagenes/tov_bel_3.jpeg" alt="2023"></div>
                     <h4>El Sí Quiero</h4>
                     <p>Una noche mágica y un anillo de promesa eterna.</p>
                 </div>
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
                     <div class="timeline-year">2026</div>
-                    <div class="timeline-image"><img src="https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="2026"></div>
+                    <div class="timeline-image"><img src="imagenes/tov_bel_3.jpeg" alt="2026"></div>
                     <h4>Un Nuevo Comienzo</h4>
                     <p>El día que uniremos nuestras vidas para siempre.</p>
                 </div>
@@ -641,22 +731,46 @@
         </div>
     </div>
 
+    <!-- SECCIÓN DE EVENTOS MEJORADA: Ceremonia + Recepción con imagen y ver más ubicación -->
     <section id="events" class="section section-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Celebraciones</h2>
+            <h2 class="section-title" data-aos="fade-up">Nuestros Eventos</h2>
             <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
-            <div class="events-grid">
-                <div class="event-card" data-aos="fade-right">
-                    <i class="fas fa-ring"></i>
-                    <h3>Ceremonia Religiosa</h3>
-                    <div class="event-time">14:00 - 17:00 hrs</div>
-                    <p>Iglesia San Francisco de Asís<br>Salta, Argentina</p>
+            <p class="section-subtitle" data-aos="fade-up">Acompaña cada momento especial</p>
+            
+            <div class="detailed-events">
+                <!-- Ceremonia Religiosa -->
+                <div class="event-detail-card" data-aos="fade-right">
+                    <div class="event-image">
+                        <img src="imagenes/church.png" alt="Ceremonia Religiosa Iglesia">
+                    </div>
+                    <div class="event-info">
+                        <h3>✨ Ceremonia Religiosa</h3>
+                        <div class="event-time-icon"><i class="far fa-clock"></i> <span>Sábado 25 de Julio, 14:00 hrs</span></div>
+                        <p class="event-description">Celebraremos nuestro amor ante Dios y nuestra familia más querida. Una ceremonia llena de fe, emociones y votos eternos. Te esperamos para compartir este momento tan especial.</p>
+                        <div class="event-address">
+                            <i class="fas fa-church"></i>
+                            <span>Parroquia Padre Jesús, Aquixtla, Puebla. Centro, 73650 Aquixtla, Pue.</span>
+                        </div>
+                        <a href="https://maps.google.com/?q=Parroquia+Padre+Jes%C3%BAs+Aquixtla+Puebla" target="_blank" class="btn-view-more">Ver más <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
-                <div class="event-card" data-aos="fade-left">
-                    <i class="fas fa-champagne-glasses"></i>
-                    <h3>Recepción & Fiesta</h3>
-                    <div class="event-time">18:00 - 23:00 hrs</div>
-                    <p>Finca La Esmeralda - Salta<br>Jardines decorados con estilo natural</p>
+
+                <!-- Recepción & Fiesta -->
+                <div class="event-detail-card" data-aos="fade-left">
+                    <div class="event-image">
+                        <img src="imagenes/campes.jpeg" alt="Recepción Jardín Rancho Campestre">
+                    </div>
+                    <div class="event-info">
+                        <h3>🎉 Recepción & Fiesta</h3>
+                        <div class="event-time-icon"><i class="far fa-clock"></i> <span>Sábado 25 de Julio, 16:00 hrs</span></div>
+                        <p class="event-description">Disfrutemos juntos de una velada mágica con música, baile, deliciosa comida de banquete y brindis interminables. Celebración en un entorno campestre rodeados de naturaleza y amor.</p>
+                        <div class="event-address">
+                            <i class="fas fa-tree"></i>
+                            <span>Rancho Campestre, San Vicente, 73650 Tonalapa, Puebla. (Acceso por carretera principal)</span>
+                        </div>
+                        <a href="https://maps.google.com/?q=Rancho+Campestre+San+Vicente+Tonalapa+Puebla" target="_blank" class="btn-view-more">Ver más <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -671,66 +785,58 @@
             <div class="lodging-grid">
                 <div class="lodging-card" data-aos="fade-up">
                     <div class="lodging-image">
-                        <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Hotel Sheraton">
+                        <img src="imagenes/delangel.png" alt="Posada D' Angel">
                     </div>
                     <div class="lodging-content">
-                        <h3>Hotel Sheraton Salta</h3>
-                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Centro, Salta</div>
-                        <p class="lodging-description">Hotel 5 estrellas con vistas a la ciudad, pileta climatizada y spa. A 15 minutos de la finca.</p>
-                        <p class="lodging-price">💚 Tarifa especial: $120 USD / noche</p>
-                        <a href="#" class="lodging-btn">Ver más</a>
+                        <h3>Posada D' Angel</h3>
+                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Juárez 8, Centro, 73300 Aquixtla, Pue.</div>
+                        <p class="lodging-description">Posada acogedora con ambiente colonial y servicios de calidad. Ideal para descansar cerca de la ceremonia.</p>
+                        <p class="lodging-price">📞 Reservaciones: 7979718108</p>
+                        <a href="https://maps.app.goo.gl/p68nK2ok7Ciy6hPX7" target="_blank" class="lodging-btn">Ver más</a>
                     </div>
                 </div>
 
                 <div class="lodging-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="lodging-image">
-                        <img src="https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Finca La Esmeralda">
+                        <img src="imagenes/galavis.png" alt="Hotel Galavis">
                     </div>
                     <div class="lodging-content">
-                        <h3>Finca La Esmeralda</h3>
-                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Valle de Lerma</div>
-                        <p class="lodging-description">Hospedaje dentro de la misma finca donde será la recepción. Cabañas rodeadas de naturaleza.</p>
-                        <p class="lodging-price">💚 Tarifa especial: $95 USD / noche</p>
-                        <a href="#" class="lodging-btn">Ver más</a>
+                        <h3>Hotel Galavis</h3>
+                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Zaragoza S/N, Centro, 73620 Aquixtla, Pue.</div>
+                        <p class="lodging-description">Hotel moderno con servicios de calidad y ubicación céntrica. Habitaciones cómodas.</p>
+                        <p class="lodging-price">📞 Reservaciones: 7971144112</p>
+                        <a href="https://maps.app.goo.gl/huGs3y995i9eXzPu7" target="_blank" class="lodging-btn">Ver más</a>
                     </div>
                 </div>
 
                 <div class="lodging-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="lodging-image">
-                        <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Boutique Hotel">
+                        <img src="imagenes/teocalli.png" alt="Teocalli Boutique">
                     </div>
                     <div class="lodging-content">
-                        <h3>Legado Mitológico</h3>
-                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Casco Histórico</div>
-                        <p class="lodging-description">Boutique hotel de estilo colonial, desayuno incluido y a pasos de la iglesia.</p>
-                        <p class="lodging-price">💚 Tarifa especial: $85 USD / noche</p>
-                        <a href="#" class="lodging-btn">Ver más</a>
+                        <h3>Teocalli</h3>
+                        <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Juárez 8, Centro, 73300 Centro, Pue.</div>
+                        <p class="lodging-description">Hotel boutique con ambiente colonial y detalles únicos. Experiencia acogedora.</p>
+                        <p class="lodging-price">🌙 Tarifa preferencial para invitados</p>
+                        <a href="https://maps.app.goo.gl/u4XMPAvhwHqvFu3N6" target="_blank" class="lodging-btn">Ver más</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="section-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Galería de Recuerdos</h2>
-            <div class="separator" style="margin: 20px auto;" data-aos="fade-up"><i class="fas fa-heart"></i></div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-aos="fade-up"><img src="https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Gallery"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100"><img src="https://images.pexels.com/photos/2253836/pexels-photo-2253836.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Gallery"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200"><img src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Gallery"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300"><img src="https://images.pexels.com/photos/3822731/pexels-photo-3822731.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Gallery"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400"><img src="https://images.pexels.com/photos/2254698/pexels-photo-2254698.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Gallery"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="500"><img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Gallery"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
+    <footer id="footer" class="footer">
         <h3>Belén & Tobias</h3>
         <div class="separator" style="background: var(--gold); margin: 20px auto;"></div>
-        <div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
-        <div class="copyright"><p>© 2025 Belén & Tobias - Nuestra Boda Verde & Dorado</p></div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Belén & Tobias - Nuestra Boda Verde & Dorado</p>
+            <p style="margin-top: 10px; font-size: 11px;">¿Preguntas? Contáctanos: belenytobias@boda.com</p>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -750,14 +856,45 @@
         updateCountdown();
 
         window.addEventListener('scroll', function() {
-            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+            
+            // Actualizar clase activa en el menú según scroll
+            const sections = document.querySelectorAll('section[id], div[id="footer"]');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            const scrollPos = window.scrollY + 200;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href').substring(1);
+                if (href === current) {
+                    link.classList.add('active');
+                } else if (current === '' && href === 'home') {
+                    link.classList.add('active');
+                }
+            });
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target) target.scrollIntoView({ behavior: 'smooth' });
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Actualizar URL sin recargar
+                    history.pushState(null, null, `#${targetId}`);
+                }
             });
         });
     </script>
