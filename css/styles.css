@@ -1,948 +1,979 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: #2c2c2c;
-            background-color: #FDFBF7;
-            overflow-x: hidden;
-        }
-
-        /* ========== PALETA DE COLORES ========== */
-        :root {
-            --wedding-green: #2E7D32;
-            --wedding-green-dark: #1B5E20;
-            --wedding-green-light: #4CAF50;
-            --gold: #D4AF37;
-            --gold-light: #FFD700;
-            --gold-dark: #B8860B;
-            --cream-bg: #FDFBF7;
-            --light-green-bg: #F1F8E9;
-            --text-dark: #2E3B2C;
-        }
-
-        /* ========== KEYFRAMES ========== */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ========== HEADER & NAVEGACIÓN RESPONSIVA ========== */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            flex-wrap: wrap;
-        }
-
-        .header.scrolled {
-            padding: 15px 60px;
-            background: white;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
-        }
-
-        .logo {
-            font-family: 'Antic Didone', serif;
-            font-size: 24px;
-            letter-spacing: 4px;
-            color: var(--wedding-green);
-            text-decoration: none;
-            z-index: 1001;
-        }
-
-        /* Menú de navegación escritorio */
-        .nav-menu {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
-        }
-
-        .nav-menu a:hover {
-            color: var(--wedding-green);
-        }
-
-        /* Iconos sociales escritorio */
-        .social-icons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-icons a {
-            color: var(--gold);
-            font-size: 16px;
-            transition: transform 0.3s, color 0.3s;
-        }
-
-        .social-icons a:hover {
-            transform: translateY(-3px);
-            color: var(--wedding-green);
-        }
-
-        /* Botón hamburguesa (oculto en escritorio) */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 28px;
-            color: var(--wedding-green);
-            cursor: pointer;
-            z-index: 1001;
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            color: var(--gold);
-        }
-
-        /* Overlay para móvil */
-        .menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 998;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* ========== RESPONSIVE HEADER (MÓVIL Y TABLET) ========== */
-        @media (max-width: 768px) {
-            .header {
-                padding: 15px 25px;
-            }
-            
-            .header.scrolled {
-                padding: 12px 25px;
-            }
-            
-            /* Ocultar menú y redes en móvil por defecto */
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 30px;
-                transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-                z-index: 999;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-                padding: 80px 20px 40px;
-                margin: 0;
-                list-style: none;
-            }
-            
-            .nav-menu.active {
-                right: 0;
-            }
-            
-            .nav-menu li {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .nav-menu a {
-                font-size: 16px;
-                letter-spacing: 2px;
-                display: block;
-                padding: 12px 0;
-            }
-            
-            .nav-menu a::after {
-                bottom: 5px;
-            }
-            
-            /* Ocultar iconos sociales del header en móvil (se muestran dentro del menú lateral) */
-            .header .social-icons {
-                display: none;
-            }
-            
-            /* Agregar iconos sociales dentro del menú móvil */
-            .nav-menu .mobile-social-icons {
-                display: flex;
-                gap: 25px;
-                justify-content: center;
-                margin-top: 30px;
-                padding-top: 20px;
-                border-top: 1px solid rgba(212, 175, 55, 0.3);
-                width: 100%;
-            }
-            
-            .nav-menu .mobile-social-icons a {
-                display: inline-block;
-                width: auto;
-                font-size: 20px;
-                color: var(--gold);
-                padding: 8px;
-            }
-            
-            .nav-menu .mobile-social-icons a:hover {
-                color: var(--wedding-green);
-                transform: translateY(-3px);
-            }
-            
-            /* Botón hamburguesa visible */
-            .menu-toggle {
-                display: block;
-            }
-        }
-
-        /* Ajuste para tablets pequeñas */
-        @media (max-width: 992px) and (min-width: 769px) {
-            .header {
-                padding: 15px 30px;
-            }
-            
-            .nav-menu {
-                gap: 25px;
-            }
-            
-            .nav-menu a {
-                font-size: 11px;
-                letter-spacing: 1.5px;
-            }
-            
-            .social-icons {
-                gap: 15px;
-            }
-        }
-
-        /* ========== HERO ========== */
-        .hero {
-            height: 100vh;
-            min-height: 700px;
-            background: linear-gradient(rgba(46, 125, 50, 0.35), rgba(27, 94, 32, 0.45)), url('https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1920');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to top, var(--cream-bg), transparent);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 0 20px;
-            z-index: 1;
-        }
-
-        .hero-content .subtitle {
-            font-family: 'EB Garamond', serif;
-            font-size: 24px;
-            font-weight: 300;
-            font-style: italic;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .hero-content h1 {
-            font-family: 'Antic Didone', serif;
-            font-size: 90px;
-            letter-spacing: 12px;
-            margin-bottom: 20px;
-            font-weight: 400;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-        }
-
-        .hero-content h1 span {
-            color: var(--gold-light);
-        }
-
-        .hero-content .date {
-            font-size: 16px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-top: 30px;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-
-        /* ========== ELEMENTOS COMUNES ========== */
-        .separator {
-            width: 60px;
-            height: 2px;
-            background: var(--gold);
-            margin: 30px auto;
-            position: relative;
-        }
-
-        .separator i {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: transparent;
-            padding: 0 10px;
-            color: var(--gold);
-        }
-
-        .section {
-            padding: 120px 20px;
-        }
-
-        .section-light {
-            background: var(--cream-bg);
-        }
-
-        .section-beige {
-            background: var(--light-green-bg);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Antic Didone', serif;
-            font-size: 48px;
-            letter-spacing: 6px;
-            margin-bottom: 20px;
-            color: var(--wedding-green);
-            font-weight: 400;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-family: 'EB Garamond', serif;
-            font-size: 20px;
-            color: var(--gold-dark);
-            margin-bottom: 60px;
-            font-style: italic;
-        }
-
-        /* ========== SECCIÓN HISTORIA DE AMOR ========== */
-        .story-timeline {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .story-card {
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-            background: white;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(46, 125, 50, 0.08);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .story-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 45px rgba(46, 125, 50, 0.15);
-            border-color: var(--gold);
-        }
-
-        .story-image-container {
-            position: relative;
-            width: 100%;
-            padding-top: 100%;
-            overflow: hidden;
-            background: var(--light-green-bg);
-        }
-
-        .story-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .story-card:hover .story-image {
-            transform: scale(1.05);
-        }
-
-        .story-year {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(212, 175, 55, 0.9);
-            backdrop-filter: blur(4px);
-            color: white;
-            font-family: 'Antic Didone', serif;
-            font-size: 28px;
-            font-weight: bold;
-            padding: 8px 18px;
-            border-radius: 40px;
-            letter-spacing: 2px;
-            z-index: 2;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .story-content {
-            padding: 28px 24px 32px;
-            text-align: center;
-        }
-
-        .story-content h4 {
-            font-family: 'Antic Didone', serif;
-            font-size: 26px;
-            color: var(--wedding-green-dark);
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        .story-content p {
-            font-size: 15px;
-            line-height: 1.65;
-            color: #4a5b48;
-            margin-top: 8px;
-        }
-
-        .story-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 22px;
-            transition: transform 0.3s;
-        }
-
-        .story-card:hover .story-icon {
-            transform: rotate(360deg);
-        }
-
-        /* ========== EVENTOS DETALLADOS ========== */
-        .detailed-events {
-            display: flex;
-            flex-direction: column;
-            gap: 80px;
-            margin-top: 40px;
-        }
-
-        .event-detail-card {
-            display: flex;
-            flex-wrap: wrap;
-            background: white;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-        }
-
-        .event-detail-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 28px 40px -15px rgba(46, 125, 50, 0.2);
-            border-color: var(--gold);
-        }
-
-        .event-image {
-            flex: 1.2;
-            min-width: 280px;
-            overflow: hidden;
-        }
-
-        .event-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            display: block;
-        }
-
-        .event-detail-card:hover .event-image img {
-            transform: scale(1.03);
-        }
-
-        .event-info {
-            flex: 1;
-            padding: 40px 35px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .event-info h3 {
-            font-family: 'Antic Didone', serif;
-            font-size: 32px;
-            color: var(--wedding-green-dark);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .event-info .event-time-icon {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 15px 0 10px;
-            color: var(--gold-dark);
-            font-weight: 500;
-        }
-
-        .event-info .event-time-icon i {
-            font-size: 22px;
-            color: var(--gold);
-        }
-
-        .event-description {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #4a5b48;
-            margin: 15px 0 20px;
-        }
-
-        .event-address {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            background: var(--light-green-bg);
-            padding: 14px 18px;
-            border-radius: 24px;
-            margin: 10px 0 25px;
-            font-size: 14px;
-            color: var(--text-dark);
-        }
-
-        .event-address i {
-            color: var(--gold);
-            font-size: 18px;
-            margin-top: 2px;
-        }
-
-        .btn-view-more {
-            align-self: flex-start;
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--wedding-green-dark);
-            padding: 12px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-view-more i {
-            font-size: 14px;
-            transition: transform 0.2s;
-        }
-
-        .btn-view-more:hover {
-            background: var(--gold);
-            color: var(--wedding-green-dark);
-            border-color: var(--gold);
-        }
-
-        .btn-view-more:hover i {
-            transform: translateX(4px);
-        }
-
-        /* ========== COUNTDOWN ========== */
-        .countdown-section {
-            background: linear-gradient(135deg, var(--light-green-bg) 0%, var(--cream-bg) 100%);
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            margin-top: 60px;
-        }
-
-        .countdown-item {
-            text-align: center;
-            background: white;
-            padding: 30px 40px;
-            border-radius: 16px;
-            min-width: 140px;
-            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
-            border-top: 3px solid var(--gold);
-        }
-
-        .countdown-number {
-            font-family: 'Antic Didone', serif;
-            font-size: 56px;
-            font-weight: 400;
-            color: var(--wedding-green);
-        }
-
-        .countdown-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-top: 10px;
-            color: var(--gold-dark);
-        }
-
-        /* ========== HOSPEDAJE ========== */
-        .lodging-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-        }
-
-        .lodging-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .lodging-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 45px rgba(46, 125, 50, 0.12);
-            border-color: var(--gold);
-        }
-
-        .lodging-image {
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .lodging-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .lodging-card:hover .lodging-image img {
-            transform: scale(1.05);
-        }
-
-        .lodging-content {
-            padding: 25px;
-        }
-
-        .lodging-content h3 {
-            font-family: 'Antic Didone', serif;
-            font-size: 24px;
-            color: var(--wedding-green-dark);
-            margin-bottom: 10px;
-        }
-
-        .lodging-location {
-            color: var(--gold);
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .lodging-description {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .lodging-price {
-            font-weight: 600;
-            color: var(--wedding-green);
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-
-        .lodging-btn {
-            display: inline-block;
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--wedding-green-dark);
-            padding: 10px 25px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .lodging-btn:hover {
-            background: var(--gold);
-            color: var(--wedding-green-dark);
-            border-color: var(--gold);
-        }
-
-        /* ========== PADRINOS ========== */
-        .godparents-grid {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .godparent-card {
-            background: white;
-            border-radius: 40px;
-            padding: 30px;
-            text-align: center;
-            min-width: 240px;
-            box-shadow: 0 15px 35px rgba(46, 125, 50, 0.1);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.5);
-        }
-
-        .godparent-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .godparent-icon {
-            font-size: 56px;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .godparent-card h3 {
-            font-family: 'Antic Didone', serif;
-            font-size: 28px;
-            color: var(--wedding-green-dark);
-            margin-bottom: 15px;
-        }
-
-        .godparent-card p {
-            font-size: 16px;
-            color: #4a5b48;
-            font-weight: 500;
-        }
-
-        .godparent-role {
-            font-family: 'EB Garamond', serif;
-            font-size: 18px;
-            color: var(--gold-dark);
-            font-style: italic;
-            margin-top: 8px;
-        }
-
-        /* ========== FOOTER ========== */
-        .footer {
-            background: #1B2E1A;
-            color: #aaa;
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
-
-        .footer h3 {
-            font-family: 'Antic Didone', serif;
-            font-size: 32px;
-            letter-spacing: 4px;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .footer .separator {
-            background: var(--gold);
-        }
-
-        .footer .social-icons {
-            justify-content: center;
-            margin: 30px 0;
-        }
-
-        .footer .social-icons a {
-            color: #aaa;
-        }
-
-        .footer .social-icons a:hover {
-            color: var(--gold);
-        }
-
-        .copyright {
-            font-size: 12px;
-            opacity: 0.5;
-            margin-top: 40px;
-        }
-
-        /* ========== RESPONSIVE GENERAL ========== */
-        @media (max-width: 992px) {
-            .hero-content h1 { 
-                font-size: 55px; 
-                letter-spacing: 6px; 
-            }
-            .lodging-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 30px;
-            }
-            .event-detail-card { 
-                flex-direction: column; 
-            }
-            .event-image { 
-                min-height: 280px; 
-            }
-            .event-info { 
-                padding: 30px 25px; 
-            }
-            .section-title {
-                font-size: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 { 
-                font-size: 38px; 
-                letter-spacing: 4px; 
-            }
-            .hero-content .subtitle {
-                font-size: 18px;
-            }
-            .hero-content .date {
-                font-size: 12px;
-                letter-spacing: 3px;
-            }
-            .hero {
-                min-height: 550px;
-            }
-            .section-title { 
-                font-size: 32px; 
-                letter-spacing: 3px;
-            }
-            .section-subtitle {
-                font-size: 16px;
-                margin-bottom: 40px;
-            }
-            .countdown {
-                gap: 20px;
-            }
-            .countdown-item { 
-                padding: 20px 25px; 
-                min-width: 100px; 
-            }
-            .countdown-number { 
-                font-size: 36px; 
-            }
-            .countdown-label {
-                font-size: 9px;
-                letter-spacing: 2px;
-            }
-            .lodging-grid { 
-                grid-template-columns: 1fr; 
-            }
-            .story-card {
-                max-width: 100%;
-            }
-            .godparents-grid {
-                gap: 30px;
-            }
-            .godparent-card {
-                min-width: 200px;
-                padding: 25px;
-            }
-            .godparent-card h3 {
-                font-size: 22px;
-            }
-            .section {
-                padding: 80px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 28px;
-                letter-spacing: 3px;
-            }
-            .hero-content .subtitle {
-                font-size: 14px;
-            }
-            .section-title {
-                font-size: 26px;
-            }
-            .story-content h4 {
-                font-size: 22px;
-            }
-            .event-info h3 {
-                font-size: 26px;
-            }
-            .countdown-item {
-                padding: 15px 18px;
-                min-width: 70px;
-            }
-            .countdown-number {
-                font-size: 28px;
-            }
-            .btn-view-more, .lodging-btn {
-                padding: 8px 20px;
-                font-size: 11px;
-            }
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #2c2c2c;
+    background-color: #FDFBF7;
+    overflow-x: hidden;
+}
+
+/* ========== PALETA DE COLORES ========== */
+:root {
+    --wedding-green: #2E7D32;
+    --wedding-green-dark: #1B5E20;
+    --wedding-green-light: #4CAF50;
+    --gold: #D4AF37;
+    --gold-light: #FFD700;
+    --gold-dark: #B8860B;
+    --cream-bg: #FDFBF7;
+    --light-green-bg: #F1F8E9;
+    --text-dark: #2E3B2C;
+}
+
+/* ========== KEYFRAMES ========== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== HEADER & NAVEGACIÓN RESPONSIVA ========== */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    flex-wrap: wrap;
+}
+
+.header.scrolled {
+    padding: 15px 60px;
+    background: white;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-family: 'Antic Didone', serif;
+    font-size: 24px;
+    letter-spacing: 4px;
+    color: var(--wedding-green);
+    text-decoration: none;
+    z-index: 1001;
+}
+
+/* Menú de navegación escritorio */
+.nav-menu {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+.nav-menu a:hover {
+    color: var(--wedding-green);
+}
+
+/* Iconos sociales escritorio */
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: var(--gold);
+    font-size: 16px;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+    color: var(--wedding-green);
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--wedding-green);
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle:hover {
+    color: var(--gold);
+    background: rgba(46, 125, 50, 0.05);
+}
+
+/* Overlay para móvil */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ========== RESPONSIVE MÓVIL (MENOS DE 768px) ========== */
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 20px;
+    }
+    
+    .header.scrolled {
+        padding: 10px 20px;
+    }
+    
+    .logo {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+    
+    /* Botón hamburguesa visible y a la derecha */
+    .menu-toggle {
+        display: flex;
+        margin-left: auto;
+    }
+    
+    /* Ocultar iconos sociales del header en móvil */
+    .header .social-icons {
+        display: none;
+    }
+    
+    /* Menú lateral */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 300px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        z-index: 999;
+        box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+        padding: 80px 20px 30px;
+        margin: 0;
+        list-style: none;
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-menu a {
+        font-size: 16px;
+        letter-spacing: 2px;
+        display: block;
+        padding: 18px 0;
+        font-weight: 500;
+    }
+    
+    .nav-menu a::after {
+        display: none;
+    }
+    
+    .nav-menu a:active {
+        color: var(--gold);
+    }
+    
+    /* Iconos sociales dentro del menú móvil */
+    .nav-menu .mobile-social-icons {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin-top: 30px;
+        padding-top: 25px;
+        border-top: 1px solid rgba(212, 175, 55, 0.3);
+        width: 100%;
+    }
+    
+    .nav-menu .mobile-social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(212, 175, 55, 0.1);
+        border-radius: 50%;
+        font-size: 18px;
+        color: var(--gold);
+        padding: 0;
+        transition: all 0.3s;
+    }
+    
+    .nav-menu .mobile-social-icons a:active {
+        background: var(--gold);
+        color: white;
+        transform: translateY(-3px);
+    }
+}
+
+/* Ajuste para tablets pequeñas */
+@media (max-width: 992px) and (min-width: 769px) {
+    .header {
+        padding: 15px 30px;
+    }
+    
+    .nav-menu {
+        gap: 25px;
+    }
+    
+    .nav-menu a {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+    
+    .social-icons {
+        gap: 15px;
+    }
+}
+
+/* ========== HERO ========== */
+.hero {
+    height: 100vh;
+    min-height: 700px;
+    background: linear-gradient(rgba(46, 125, 50, 0.35), rgba(27, 94, 32, 0.45)), url('https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1920');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, var(--cream-bg), transparent);
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.hero-content .subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-content h1 {
+    font-family: 'Antic Didone', serif;
+    font-size: 90px;
+    letter-spacing: 12px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.hero-content h1 span {
+    color: var(--gold-light);
+}
+
+.hero-content .date {
+    font-size: 16px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-top: 30px;
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+/* ========== ELEMENTOS COMUNES ========== */
+.separator {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 30px auto;
+    position: relative;
+}
+
+.separator i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    padding: 0 10px;
+    color: var(--gold);
+}
+
+.section {
+    padding: 120px 20px;
+}
+
+.section-light {
+    background: var(--cream-bg);
+}
+
+.section-beige {
+    background: var(--light-green-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Antic Didone', serif;
+    font-size: 48px;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    color: var(--wedding-green);
+    font-weight: 400;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    color: var(--gold-dark);
+    margin-bottom: 60px;
+    font-style: italic;
+}
+
+/* ========== SECCIÓN HISTORIA DE AMOR ========== */
+.story-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.story-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    background: white;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.08);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.story-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 45px rgba(46, 125, 50, 0.15);
+    border-color: var(--gold);
+}
+
+.story-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    background: var(--light-green-bg);
+}
+
+.story-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.story-card:hover .story-image {
+    transform: scale(1.05);
+}
+
+.story-year {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(212, 175, 55, 0.9);
+    backdrop-filter: blur(4px);
+    color: white;
+    font-family: 'Antic Didone', serif;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 8px 18px;
+    border-radius: 40px;
+    letter-spacing: 2px;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.story-content {
+    padding: 28px 24px 32px;
+    text-align: center;
+}
+
+.story-content h4 {
+    font-family: 'Antic Didone', serif;
+    font-size: 26px;
+    color: var(--wedding-green-dark);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.story-content p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #4a5b48;
+    margin-top: 8px;
+}
+
+.story-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 22px;
+    transition: transform 0.3s;
+}
+
+.story-card:hover .story-icon {
+    transform: rotate(360deg);
+}
+
+/* ========== EVENTOS DETALLADOS ========== */
+.detailed-events {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    margin-top: 40px;
+}
+
+.event-detail-card {
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.event-detail-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 40px -15px rgba(46, 125, 50, 0.2);
+    border-color: var(--gold);
+}
+
+.event-image {
+    flex: 1.2;
+    min-width: 280px;
+    overflow: hidden;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.event-detail-card:hover .event-image img {
+    transform: scale(1.03);
+}
+
+.event-info {
+    flex: 1;
+    padding: 40px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-info h3 {
+    font-family: 'Antic Didone', serif;
+    font-size: 32px;
+    color: var(--wedding-green-dark);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.event-info .event-time-icon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0 10px;
+    color: var(--gold-dark);
+    font-weight: 500;
+}
+
+.event-info .event-time-icon i {
+    font-size: 22px;
+    color: var(--gold);
+}
+
+.event-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a5b48;
+    margin: 15px 0 20px;
+}
+
+.event-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--light-green-bg);
+    padding: 14px 18px;
+    border-radius: 24px;
+    margin: 10px 0 25px;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.event-address i {
+    color: var(--gold);
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.btn-view-more {
+    align-self: flex-start;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--wedding-green-dark);
+    padding: 12px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-view-more i {
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.btn-view-more:hover {
+    background: var(--gold);
+    color: var(--wedding-green-dark);
+    border-color: var(--gold);
+}
+
+.btn-view-more:hover i {
+    transform: translateX(4px);
+}
+
+/* ========== COUNTDOWN ========== */
+.countdown-section {
+    background: linear-gradient(135deg, var(--light-green-bg) 0%, var(--cream-bg) 100%);
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.countdown-item {
+    text-align: center;
+    background: white;
+    padding: 30px 40px;
+    border-radius: 16px;
+    min-width: 140px;
+    box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
+    border-top: 3px solid var(--gold);
+}
+
+.countdown-number {
+    font-family: 'Antic Didone', serif;
+    font-size: 56px;
+    font-weight: 400;
+    color: var(--wedding-green);
+}
+
+.countdown-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 10px;
+    color: var(--gold-dark);
+}
+
+/* ========== HOSPEDAJE ========== */
+.lodging-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.lodging-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.lodging-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 45px rgba(46, 125, 50, 0.12);
+    border-color: var(--gold);
+}
+
+.lodging-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.lodging-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.lodging-card:hover .lodging-image img {
+    transform: scale(1.05);
+}
+
+.lodging-content {
+    padding: 25px;
+}
+
+.lodging-content h3 {
+    font-family: 'Antic Didone', serif;
+    font-size: 24px;
+    color: var(--wedding-green-dark);
+    margin-bottom: 10px;
+}
+
+.lodging-location {
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lodging-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.lodging-price {
+    font-weight: 600;
+    color: var(--wedding-green);
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.lodging-btn {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--wedding-green-dark);
+    padding: 10px 25px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.lodging-btn:hover {
+    background: var(--gold);
+    color: var(--wedding-green-dark);
+    border-color: var(--gold);
+}
+
+/* ========== PADRINOS ========== */
+.godparents-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.godparent-card {
+    background: white;
+    border-radius: 40px;
+    padding: 30px;
+    text-align: center;
+    min-width: 240px;
+    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+}
+
+.godparent-card:hover {
+    transform: translateY(-10px);
+}
+
+.godparent-icon {
+    font-size: 56px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.godparent-card h3 {
+    font-family: 'Antic Didone', serif;
+    font-size: 28px;
+    color: var(--wedding-green-dark);
+    margin-bottom: 15px;
+}
+
+.godparent-card p {
+    font-size: 16px;
+    color: #4a5b48;
+    font-weight: 500;
+}
+
+.godparent-role {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    color: var(--gold-dark);
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: #1B2E1A;
+    color: #aaa;
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.footer h3 {
+    font-family: 'Antic Didone', serif;
+    font-size: 32px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.footer .separator {
+    background: var(--gold);
+}
+
+.footer .social-icons {
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.footer .social-icons a {
+    color: #aaa;
+}
+
+.footer .social-icons a:hover {
+    color: var(--gold);
+}
+
+.copyright {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-top: 40px;
+}
+
+/* ========== RESPONSIVE GENERAL ========== */
+@media (max-width: 992px) {
+    .hero-content h1 { 
+        font-size: 55px; 
+        letter-spacing: 6px; 
+    }
+    .lodging-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 30px;
+    }
+    .event-detail-card { 
+        flex-direction: column; 
+    }
+    .event-image { 
+        min-height: 280px; 
+    }
+    .event-info { 
+        padding: 30px 25px; 
+    }
+    .section-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 { 
+        font-size: 38px; 
+        letter-spacing: 4px; 
+    }
+    .hero-content .subtitle {
+        font-size: 18px;
+    }
+    .hero-content .date {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+    .hero {
+        min-height: 550px;
+    }
+    .section-title { 
+        font-size: 32px; 
+        letter-spacing: 3px;
+    }
+    .section-subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    .countdown {
+        gap: 20px;
+    }
+    .countdown-item { 
+        padding: 20px 25px; 
+        min-width: 100px; 
+    }
+    .countdown-number { 
+        font-size: 36px; 
+    }
+    .countdown-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+    .lodging-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .story-card {
+        max-width: 100%;
+    }
+    .godparents-grid {
+        gap: 30px;
+    }
+    .godparent-card {
+        min-width: 200px;
+        padding: 25px;
+    }
+    .godparent-card h3 {
+        font-size: 22px;
+    }
+    .section {
+        padding: 80px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
+    .hero-content .subtitle {
+        font-size: 14px;
+    }
+    .section-title {
+        font-size: 26px;
+    }
+    .story-content h4 {
+        font-size: 22px;
+    }
+    .event-info h3 {
+        font-size: 26px;
+    }
+    .countdown-item {
+        padding: 15px 18px;
+        min-width: 70px;
+    }
+    .countdown-number {
+        font-size: 28px;
+    }
+    .btn-view-more, .lodging-btn {
+        padding: 8px 20px;
+        font-size: 11px;
+    }
+}
