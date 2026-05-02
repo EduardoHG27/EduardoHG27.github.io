@@ -976,4 +976,103 @@ body {
         padding: 8px 20px;
         font-size: 11px;
     }
+
+/* ========== PADRES (mismo estilo que padrinos) ========== */
+.parents-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.parent-card {
+    background: white;
+    border-radius: 40px;
+    padding: 30px;
+    text-align: center;
+    min-width: 280px;
+    max-width: 380px;
+    flex: 1;
+    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+}
+
+.parent-card:hover {
+    transform: translateY(-10px);
+}
+
+.parent-icon {
+    font-size: 56px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.parent-card h3 {
+    font-family: 'Antic Didone', serif;
+    font-size: 24px;
+    color: var(--wedding-green-dark);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.parent-role {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    color: var(--gold-dark);
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* Responsive para padres - Tablets */
+@media (max-width: 768px) {
+    .parents-grid {
+        gap: 30px;
+    }
+    
+    .parent-card {
+        min-width: 260px;
+        padding: 25px;
+    }
+    
+    .parent-card h3 {
+        font-size: 20px;
+    }
+    
+    .parent-icon {
+        font-size: 42px;
+    }
+    
+    .parent-role {
+        font-size: 16px;
+    }
+}
+
+/* Responsive para padres - Móviles pequeños */
+@media (max-width: 480px) {
+    .parents-grid {
+        gap: 25px;
+    }
+    
+    .parent-card {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 25px 20px;
+    }
+    
+    .parent-card h3 {
+        font-size: 18px;
+    }
+    
+    .parent-icon {
+        font-size: 38px;
+    }
+    
+    .parent-role {
+        font-size: 15px;
+    }
+}
+
+    
 }
