@@ -1,4 +1,4 @@
-        {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -30,7 +30,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ========== HEADER & NAVEGACIÓN ========== */
+        /* ========== HEADER & NAVEGACIÓN RESPONSIVA ========== */
         .header {
             position: fixed;
             top: 0;
@@ -58,8 +58,10 @@
             letter-spacing: 4px;
             color: var(--wedding-green);
             text-decoration: none;
+            z-index: 1001;
         }
 
+        /* Menú de navegación escritorio */
         .nav-menu {
             display: flex;
             gap: 40px;
@@ -98,6 +100,7 @@
             color: var(--wedding-green);
         }
 
+        /* Iconos sociales escritorio */
         .social-icons {
             display: flex;
             gap: 20px;
@@ -112,6 +115,146 @@
         .social-icons a:hover {
             transform: translateY(-3px);
             color: var(--wedding-green);
+        }
+
+        /* Botón hamburguesa (oculto en escritorio) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--wedding-green);
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            color: var(--gold);
+        }
+
+        /* Overlay para móvil */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ========== RESPONSIVE HEADER (MÓVIL Y TABLET) ========== */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 25px;
+            }
+            
+            .header.scrolled {
+                padding: 12px 25px;
+            }
+            
+            /* Ocultar menú y redes en móvil por defecto */
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+                z-index: 999;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+                padding: 80px 20px 40px;
+                margin: 0;
+                list-style: none;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu a {
+                font-size: 16px;
+                letter-spacing: 2px;
+                display: block;
+                padding: 12px 0;
+            }
+            
+            .nav-menu a::after {
+                bottom: 5px;
+            }
+            
+            /* Ocultar iconos sociales del header en móvil (se muestran dentro del menú lateral) */
+            .header .social-icons {
+                display: none;
+            }
+            
+            /* Agregar iconos sociales dentro del menú móvil */
+            .nav-menu .mobile-social-icons {
+                display: flex;
+                gap: 25px;
+                justify-content: center;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(212, 175, 55, 0.3);
+                width: 100%;
+            }
+            
+            .nav-menu .mobile-social-icons a {
+                display: inline-block;
+                width: auto;
+                font-size: 20px;
+                color: var(--gold);
+                padding: 8px;
+            }
+            
+            .nav-menu .mobile-social-icons a:hover {
+                color: var(--wedding-green);
+                transform: translateY(-3px);
+            }
+            
+            /* Botón hamburguesa visible */
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Ajuste para tablets pequeñas */
+        @media (max-width: 992px) and (min-width: 769px) {
+            .header {
+                padding: 15px 30px;
+            }
+            
+            .nav-menu {
+                gap: 25px;
+            }
+            
+            .nav-menu a {
+                font-size: 11px;
+                letter-spacing: 1.5px;
+            }
+            
+            .social-icons {
+                gap: 15px;
+            }
         }
 
         /* ========== HERO ========== */
@@ -692,16 +835,8 @@
             margin-top: 40px;
         }
 
-        /* ========== RESPONSIVE ========== */
+        /* ========== RESPONSIVE GENERAL ========== */
         @media (max-width: 992px) {
-            .header { 
-                padding: 15px 25px; 
-                flex-direction: column;
-                gap: 15px;
-            }
-            .header.scrolled {
-                padding: 12px 25px;
-            }
             .hero-content h1 { 
                 font-size: 55px; 
                 letter-spacing: 6px; 
@@ -725,11 +860,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-menu {
-                width: 100%;
-                justify-content: center;
-                gap: 20px;
-            }
             .hero-content h1 { 
                 font-size: 38px; 
                 letter-spacing: 4px; 

@@ -13,26 +13,43 @@
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
     <header class="header" id="header">
         <a href="#home" class="logo">B & T</a>
-        <ul class="nav-menu">
+        
+        <!-- Botón hamburguesa para móvil -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu" id="navMenu">
             <li><a href="#home" class="active">Inicio</a></li>
             <li><a href="#story">Historia</a></li>
             <li><a href="#events">Eventos</a></li>
             <li><a href="#lodging">Hospedaje</a></li>
             <li><a href="#godparents">Padrinos</a></li>
             <li><a href="#footer">Contacto</a></li>
+            <!-- Iconos sociales dentro del menú móvil (se muestran solo en versión móvil) -->
+            <div class="mobile-social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
         </ul>
+        
+        <!-- Iconos sociales solo visibles en escritorio -->
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
     </header>
+    
+    <!-- Overlay para cerrar menú al hacer clic fuera -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -88,6 +105,22 @@
         </div>
     </section>
 
+        <section id="godparents" class="section section-beige">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Nuestros Padrinos</h2>
+            <div class="separator" data-aos="fade-up"><i class="fas fa-leaf"></i></div>
+            <p class="section-subtitle" data-aos="fade-up">Acompañan y bendicen este camino</p>
+            
+            <div class="godparents-grid">
+                <div class="godparent-card" data-aos="fade-right">
+                    <div class="godparent-icon"><i class="fas fa-feather-alt"></i></div>
+                    <h3>Noé Samuel Nava Castilla & Verónica Rivera Sánchez</h3>
+                    <div class="godparent-role">Padrinos de Velación</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- COUNTDOWN SECTION -->
     <div class="countdown-section">
         <div class="container">
@@ -132,34 +165,13 @@
                     <div class="event-info">
                         <h3>🎉 Recepción & Fiesta</h3>
                         <div class="event-time-icon"><i class="far fa-clock"></i> <span>Sábado 25 de Julio, 16:00 hrs</span></div>
-                        <p class="event-description">Disfrutemos juntos de una velada mágica con música, baile, deliciosa comida de banquete y brindis interminables. Celebración en un entorno campestre rodeados de naturaleza y amor.</p>
+                        <p class="event-description">Disfrutemos juntos de una velada mágica con música, baile y deliciosa comida típica de la región. Celebración en un entorno familiar rodeados de naturaleza y amor.</p>
                         <div class="event-address">
                             <i class="fas fa-tree"></i>
                             <span>Rancho Campestre, San Vicente, 73650 Tonalapa, Puebla. (Acceso por carretera principal)</span>
                         </div>
                         <a href="https://maps.google.com/?q=Rancho+Campestre+San+Vicente+Tonalapa+Puebla" target="_blank" class="btn-view-more">Ver más <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="godparents" class="section section-beige">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Nuestros Padrinos</h2>
-            <div class="separator" data-aos="fade-up"><i class="fas fa-heart"></i></div>
-            <p class="section-subtitle" data-aos="fade-up">Acompañan y bendicen este camino</p>
-            
-            <div class="godparents-grid">
-                <div class="godparent-card" data-aos="fade-right">
-                    <div class="godparent-icon"><i class="fas fa-cross"></i></div>
-                    <h3>Noé Samuel Nava Castilla</h3>
-                    <div class="godparent-role">Padrino de Velación</div>
-                </div>
-                <div class="godparent-card" data-aos="fade-left">
-                    <div class="godparent-icon"><i class="fas fa-praying-hands"></i></div>
-                    <h3>Verónica Rivera Sánchez</h3>
-                    <div class="godparent-role">Madrina de Velación</div>
                 </div>
             </div>
         </div>
@@ -206,7 +218,7 @@
                         <h3>Teocalli</h3>
                         <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Juárez 8, Centro, 73300 Centro, Pue.</div>
                         <p class="lodging-description">Hotel boutique con ambiente colonial y detalles únicos. Experiencia acogedora.</p>
-                        <p class="lodging-price">🌙 Tarifa preferencial para invitados</p>
+                        <p class="lodging-price">📅 Consultar disponibilidad</p>
                         <a href="https://maps.app.goo.gl/u4XMPAvhwHqvFu3N6" target="_blank" class="lodging-btn">Ver más</a>
                     </div>
                 </div>
@@ -270,9 +282,48 @@
             }
         });
         
-        // Smooth scroll y header active
-        document.querySelectorAll('.nav-menu a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Menú hamburguesa para dispositivos móviles
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        let menuOpen = false;
+        
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            menuOpen = false;
+            document.body.style.overflow = '';
+        }
+        
+        function openMenu() {
+            navMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            menuOpen = true;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function toggleMenu() {
+            if (menuOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+        
+        menuToggle.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        
+        // Cerrar menú al hacer clic en un enlace
+        const menuLinks = document.querySelectorAll('.nav-menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    closeMenu();
+                }
+                
+                // Smooth scroll y header active
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
@@ -282,6 +333,13 @@
                 document.querySelectorAll('.nav-menu a').forEach(link => link.classList.remove('active'));
                 this.classList.add('active');
             });
+        });
+        
+        // Reajustar menú al cambiar tamaño de ventana (cerrar si se pasa a escritorio)
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && menuOpen) {
+                closeMenu();
+            }
         });
     </script>
 </body>
