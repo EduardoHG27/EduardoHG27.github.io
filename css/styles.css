@@ -776,6 +776,55 @@ body {
     border-color: var(--gold);
 }
 
+/* ========== PADRES (Diseño unificado - igual en móvil y escritorio) ========== */
+.parents-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.parent-card {
+    background: white;
+    border-radius: 40px;
+    padding: 30px 25px;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+}
+
+.parent-card:hover {
+    transform: translateY(-10px);
+}
+
+.parent-icon {
+    font-size: 48px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.parent-card h3 {
+    font-family: 'Antic Didone', serif;
+    font-size: 20px;
+    color: var(--wedding-green-dark);
+    margin-bottom: 12px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.parent-role {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: var(--gold-dark);
+    font-style: italic;
+    margin-top: 8px;
+}
+
 /* ========== PADRINOS ========== */
 .godparents-grid {
     display: flex;
@@ -788,9 +837,10 @@ body {
 .godparent-card {
     background: white;
     border-radius: 40px;
-    padding: 30px;
+    padding: 40px 30px;
     text-align: center;
-    min-width: 240px;
+    min-width: 350px;
+    max-width: 500px;
     box-shadow: 0 15px 35px rgba(46, 125, 50, 0.1);
     transition: transform 0.3s ease;
     border: 1px solid rgba(212, 175, 55, 0.5);
@@ -808,23 +858,20 @@ body {
 
 .godparent-card h3 {
     font-family: 'Antic Didone', serif;
-    font-size: 28px;
+    font-size: 24px;
     color: var(--wedding-green-dark);
     margin-bottom: 15px;
-}
-
-.godparent-card p {
-    font-size: 16px;
-    color: #4a5b48;
-    font-weight: 500;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: normal;
 }
 
 .godparent-role {
     font-family: 'EB Garamond', serif;
-    font-size: 18px;
+    font-size: 20px;
     color: var(--gold-dark);
     font-style: italic;
-    margin-top: 8px;
+    margin-top: 12px;
 }
 
 /* ========== FOOTER ========== */
@@ -888,6 +935,16 @@ body {
     .section-title {
         font-size: 40px;
     }
+    .godparent-card {
+        min-width: 300px;
+        padding: 30px 25px;
+    }
+    .godparent-card h3 {
+        font-size: 22px;
+    }
+    .godparent-role {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -937,11 +994,14 @@ body {
         gap: 30px;
     }
     .godparent-card {
-        min-width: 200px;
-        padding: 25px;
+        min-width: 280px;
+        padding: 30px 25px;
     }
     .godparent-card h3 {
-        font-size: 22px;
+        font-size: 20px;
+    }
+    .godparent-role {
+        font-size: 18px;
     }
     .section {
         padding: 80px 20px;
@@ -976,103 +1036,14 @@ body {
         padding: 8px 20px;
         font-size: 11px;
     }
-
-/* ========== PADRES (mismo estilo que padrinos) ========== */
-.parents-grid {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-}
-
-.parent-card {
-    background: white;
-    border-radius: 40px;
-    padding: 30px;
-    text-align: center;
-    min-width: 280px;
-    max-width: 380px;
-    flex: 1;
-    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.1);
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(212, 175, 55, 0.5);
-}
-
-.parent-card:hover {
-    transform: translateY(-10px);
-}
-
-.parent-icon {
-    font-size: 56px;
-    color: var(--gold);
-    margin-bottom: 20px;
-}
-
-.parent-card h3 {
-    font-family: 'Antic Didone', serif;
-    font-size: 24px;
-    color: var(--wedding-green-dark);
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
-
-.parent-role {
-    font-family: 'EB Garamond', serif;
-    font-size: 18px;
-    color: var(--gold-dark);
-    font-style: italic;
-    margin-top: 8px;
-}
-
-/* Responsive para padres - Tablets */
-@media (max-width: 768px) {
-    .parents-grid {
-        gap: 30px;
-    }
-    
-    .parent-card {
-        min-width: 260px;
-        padding: 25px;
-    }
-    
-    .parent-card h3 {
-        font-size: 20px;
-    }
-    
-    .parent-icon {
-        font-size: 42px;
-    }
-    
-    .parent-role {
-        font-size: 16px;
-    }
-}
-
-/* Responsive para padres - Móviles pequeños */
-@media (max-width: 480px) {
-    .parents-grid {
-        gap: 25px;
-    }
-    
-    .parent-card {
+    .godparent-card {
         min-width: 100%;
-        max-width: 100%;
         padding: 25px 20px;
     }
-    
-    .parent-card h3 {
+    .godparent-card h3 {
         font-size: 18px;
     }
-    
-    .parent-icon {
-        font-size: 38px;
+    .godparent-role {
+        font-size: 16px;
     }
-    
-    .parent-role {
-        font-size: 15px;
-    }
-}
-
-    
 }
