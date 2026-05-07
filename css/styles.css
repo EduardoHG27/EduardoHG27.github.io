@@ -848,26 +848,26 @@ body {
     border-color: var(--gold);
 }
 
-/* ========== PADRES ========== */
+/* ========== PADRES (TEXTO MÁS GRANDE) ========== */
 .parents-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     margin-top: 40px;
 }
 
 .parent-card {
     background: white;
-    border-radius: 40px;
-    padding: 30px 25px;
+    border-radius: 48px;
+    padding: 45px 35px;
     text-align: center;
     width: 100%;
-    max-width: 380px;
-    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.1);
+    max-width: 550px;
+    box-shadow: 0 20px 40px rgba(46, 125, 50, 0.12);
     transition: transform 0.3s ease;
-    border: 1px solid rgba(212, 175, 55, 0.5);
+    border: 2px solid rgba(212, 175, 55, 0.6);
 }
 
 .parent-card:hover {
@@ -875,29 +875,31 @@ body {
 }
 
 .parent-icon {
-    font-size: 48px;
+    font-size: 56px;
     color: var(--gold);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .parent-card h3 {
     font-family: 'Antic Didone', serif;
-    font-size: 20px;
+    font-size: 32px;
     color: var(--wedding-green-dark);
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     line-height: 1.4;
     word-break: break-word;
+    letter-spacing: 1px;
 }
 
 .parent-role {
     font-family: 'EB Garamond', serif;
-    font-size: 16px;
+    font-size: 24px;
     color: var(--gold-dark);
     font-style: italic;
-    margin-top: 8px;
+    margin-top: 12px;
+    font-weight: 500;
 }
 
-/* ========== PADRINOS ========== */
+/* ========== PADRINOS (TEXTO MÁS GRANDE) ========== */
 .godparents-grid {
     display: flex;
     justify-content: center;
@@ -908,14 +910,14 @@ body {
 
 .godparent-card {
     background: white;
-    border-radius: 40px;
-    padding: 40px 30px;
+    border-radius: 48px;
+    padding: 45px 35px;
     text-align: center;
-    min-width: 350px;
-    max-width: 500px;
-    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.1);
+    min-width: 380px;
+    max-width: 600px;
+    box-shadow: 0 20px 40px rgba(46, 125, 50, 0.12);
     transition: transform 0.3s ease;
-    border: 1px solid rgba(212, 175, 55, 0.5);
+    border: 2px solid rgba(212, 175, 55, 0.6);
 }
 
 .godparent-card:hover {
@@ -925,25 +927,27 @@ body {
 .godparent-icon {
     font-size: 56px;
     color: var(--gold);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .godparent-card h3 {
     font-family: 'Antic Didone', serif;
-    font-size: 24px;
+    font-size: 32px;
     color: var(--wedding-green-dark);
-    margin-bottom: 15px;
-    line-height: 1.5;
+    margin-bottom: 20px;
+    line-height: 1.4;
     word-break: break-word;
     white-space: normal;
+    letter-spacing: 1px;
 }
 
 .godparent-role {
     font-family: 'EB Garamond', serif;
-    font-size: 20px;
+    font-size: 24px;
     color: var(--gold-dark);
     font-style: italic;
     margin-top: 12px;
+    font-weight: 500;
 }
 
 /* ========== FOOTER ========== */
@@ -1007,15 +1011,29 @@ body {
     .section-title {
         font-size: 40px;
     }
-    .godparent-card {
-        min-width: 300px;
-        padding: 30px 25px;
+    
+    /* Ajustes responsive para padres */
+    .parent-card {
+        max-width: 480px;
+        padding: 35px 30px;
     }
-    .godparent-card h3 {
+    .parent-card h3 {
+        font-size: 28px;
+    }
+    .parent-role {
         font-size: 22px;
     }
+    
+    /* Ajustes responsive para padrinos */
+    .godparent-card {
+        min-width: 320px;
+        padding: 35px 30px;
+    }
+    .godparent-card h3 {
+        font-size: 28px;
+    }
     .godparent-role {
-        font-size: 18px;
+        font-size: 22px;
     }
 }
 
@@ -1065,19 +1083,6 @@ body {
     .story-card {
         max-width: 100%;
     }
-    .godparents-grid {
-        gap: 30px;
-    }
-    .godparent-card {
-        min-width: 280px;
-        padding: 30px 25px;
-    }
-    .godparent-card h3 {
-        font-size: 20px;
-    }
-    .godparent-role {
-        font-size: 18px;
-    }
     .section {
         padding: 80px 20px;
     }
@@ -1088,15 +1093,43 @@ body {
     .hero-indicator.active {
         width: 18px;
     }
-    /* Textos más grandes para móvil */
-    #parents .section-subtitle {
-        font-size: 24px;
+    
+    /* Textos más grandes para móvil - SECCIÓN PADRES */
+    .parent-card {
+        max-width: 100%;
+        padding: 30px 25px;
     }
-    #godparents .section-subtitle {
-        font-size: 24px;
+    .parent-card h3 {
+        font-size: 26px;
+        line-height: 1.4;
     }
     .parent-role {
-        font-size: 18px;
+        font-size: 20px;
+    }
+    .parent-icon {
+        font-size: 48px;
+    }
+    
+    /* Textos más grandes para móvil - SECCIÓN PADRINOS */
+    .godparent-card {
+        min-width: 100%;
+        padding: 30px 25px;
+    }
+    .godparent-card h3 {
+        font-size: 26px;
+    }
+    .godparent-role {
+        font-size: 20px;
+    }
+    .godparent-icon {
+        font-size: 48px;
+    }
+    
+    #parents .section-subtitle {
+        font-size: 22px;
+    }
+    #godparents .section-subtitle {
+        font-size: 20px;
     }
 }
 
@@ -1128,16 +1161,6 @@ body {
         padding: 8px 20px;
         font-size: 11px;
     }
-    .godparent-card {
-        min-width: 100%;
-        padding: 25px 20px;
-    }
-    .godparent-card h3 {
-        font-size: 18px;
-    }
-    .godparent-role {
-        font-size: 16px;
-    }
     .section-subtitle {
         font-size: 18px;
     }
@@ -1146,13 +1169,41 @@ body {
         font-size: 16px;
         line-height: 1.7;
     }
-    #parents .section-subtitle {
-        font-size: 22px;
+    
+    /* Ajustes para móviles muy pequeños - SECCIÓN PADRES */
+    .parent-card {
+        padding: 25px 20px;
     }
-    #godparents .section-subtitle {
-        font-size: 20px;
+    .parent-card h3 {
+        font-size: 24px;
     }
     .parent-role {
-        font-size: 16px;
+        font-size: 18px;
     }
+    .parent-icon {
+        font-size: 40px;
+    }
+    
+    /* Ajustes para móviles muy pequeños - SECCIÓN PADRINOS */
+    .godparent-card {
+        padding: 25px 20px;
+    }
+    .godparent-card h3 {
+        font-size: 22px;
+    }
+    .godparent-role {
+        font-size: 18px;
+    }
+    .godparent-icon {
+        font-size: 40px;
+    }
+    
+    #parents .section-subtitle {
+        font-size: 20px;
+    }
+    #godparents .section-subtitle {
+        font-size: 18px;
+    }
+
+    
 }
