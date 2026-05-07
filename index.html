@@ -52,13 +52,30 @@
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="subtitle">La boda de</div>
-            <h1>Ana Belén <span>&</span> Tobias</h1>
-            <div class="separator"><i class="fas fa-heart"></i></div>
-            <div class="date">SÁBADO, 25 DE JULIO 2026</div>
-        </div>
-    </section>
+    <!-- Carrusel de fondo -->
+    <div class="hero-slideshow" id="heroSlideshow">
+        <div class="hero-slide active" style="background-image: url('imagenes/tov_bel_4.jpeg');"></div>
+        <div class="hero-slide" style="background-image: url('imagenes/tov_bel_5.jpeg');"></div>
+        <div class="hero-slide" style="background-image: url('imagenes/tov_bel_6.jpeg');"></div>
+        <div class="hero-slide" style="background-image: url('imagenes/tov_bel_1.jpeg');"></div>
+    </div>
+    
+    <!-- Indicadores (puntitos) -->
+    <div class="hero-slide-indicators">
+        <button class="hero-indicator active" data-slide="0"></button>
+        <button class="hero-indicator" data-slide="1"></button>
+        <button class="hero-indicator" data-slide="2"></button>
+        <button class="hero-indicator" data-slide="3"></button>
+    </div>
+    
+    <div class="hero-content">
+        <div class="subtitle">Tenemos el honor de invitarlos a</div>
+        <div class="subtitle" style="font-size: 20px; margin-top: -10px;">nuestra boda</div>
+        <h1>Ana Belén <span>&</span> Tobias</h1>
+        <div class="separator"><i class="fas fa-heart"></i></div>
+        <div class="date">SÁBADO, 25 DE JULIO 2026</div>
+    </div>
+</section>
 
     <section id="story" class="section section-light">
         <div class="container">
@@ -206,7 +223,7 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Opciones de Hospedaje</h2>
             <div class="separator" data-aos="fade-up"><i class="fas fa-heart"></i></div>
-            <p class="section-subtitle" data-aos="fade-up">Hoteles recomendados con tarifas especiales para nuestros invitados</p>
+            <p class="section-subtitle" data-aos="fade-up">Hoteles recomendados</p>
             
             <div class="lodging-grid">
                 <div class="lodging-card" data-aos="fade-up">
@@ -227,7 +244,7 @@
                         <img src="imagenes/galavis.png" alt="Hotel Galavis" onerror="this.src='https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=600'">
                     </div>
                     <div class="lodging-content">
-                        <h3>Hotel Galavis</h3>
+                        <h3>Hotel Galaviz</h3>
                         <div class="lodging-location"><i class="fas fa-map-marker-alt"></i> Zaragoza S/N, Centro, 73620 Aquixtla, Pue.</div>
                         <p class="lodging-description">Hotel moderno con servicios de calidad y ubicación céntrica. Habitaciones cómodas.</p>
                         <p class="lodging-price">📞 Reservaciones: 7971144112</p>
@@ -366,6 +383,76 @@
                 closeMenu();
             }
         });
+
+        (function() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.hero-indicator');
+    let currentSlide = 0;
+    let slideInterval;
+    const intervalTime = 5000; // Cambia cada 5 segundos
+    
+    function goToSlide(index) {
+        // Remover clase active de todos los slides
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        // Remover clase active de todos los indicadores
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        
+        // Activar el slide y el indicador correspondiente
+        slides[index].classList.add('active');
+        if (indicators[index]) {
+            indicators[index].classList.add('active');
+        }
+        currentSlide = index;
+    }
+    
+    function nextSlide() {
+        let newIndex = currentSlide + 1;
+        if (newIndex >= slides.length) {
+            newIndex = 0;
+        }
+        goToSlide(newIndex);
+    }
+    
+    function startSlideshow() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+        slideInterval = setInterval(nextSlide, intervalTime);
+    }
+    
+    function stopSlideshow() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+    }
+    
+    // Eventos para los indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            stopSlideshow();
+            goToSlide(index);
+            startSlideshow();
+        });
+    });
+    
+    // Pausar carrusel cuando el mouse está sobre el hero (opcional)
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.addEventListener('mouseenter', stopSlideshow);
+        heroSection.addEventListener('mouseleave', startSlideshow);
+        
+        // Para dispositivos táctiles
+        heroSection.addEventListener('touchstart', stopSlideshow);
+        heroSection.addEventListener('touchend', startSlideshow);
+    }
+    
+    // Iniciar el carrusel
+    startSlideshow();
+})();
     </script>
 </body>
 </html>
